@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from employees.views import list_employees
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$',list_employees, name='employees'),
+    
 ]
