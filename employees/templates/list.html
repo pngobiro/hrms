@@ -11,5 +11,15 @@
   {%else%}
   <p>welcome Guest</p>
   {%endif%}
+  
+  <main>
+  
+  
+  <h1> {{all_employees.count}}  Employees </h1>
+  
+  {% for all in all_employees %}
+  <h2> {{all.full_name|title}}</h2>
+  {% endfor %}
+  </main>
   </body>
 </html>
