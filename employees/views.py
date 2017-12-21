@@ -25,5 +25,12 @@ def list_employees(request):
     }
     return render(request,"employees/list.html",context)
 
+def employee_profile(request):
+    pass
+
 def employee_edit(request, pk):
     pass
+
+def reports(request):
+         context = {}
+         return render(request,"employees/reports.html",context)

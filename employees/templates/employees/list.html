@@ -13,7 +13,7 @@
 <form action="/employees/" method="post">
   {% csrf_token %}
     <label for="team_name">Enter name: </label>
-    <input id="team_name" type="text" name="name_field" value="Search Name.">
+    <input id="team_name" type="text" name="name_field" placeholder="Search Name.">
     <input type="submit" value="search">
 </form>
 </fieldset>
@@ -29,18 +29,21 @@
     <th>Current Designation</th>
     <th></th>
     <th>More Details</th>
+    <th>File</th>
   </tr>
   
   {% for e in all_employees %}
   <tr>
     <td>{{e.full_name|title}} </td>
     <td>{{e.age}}</td>
-    <td>{{e.gender}}</td>
+    <td>{{e.get_gender_display }}</td>
     <td>{{e.id_number}}</td>
     <td>{{e.pj_number}}</td>
     <td>{{e.designation}}</td>
     <td> <a href="{}" class="logout header-link">Edit</a></td>
     <td> <a href="{}" class="logout header-link">More Details</a></td>
+ 
+      <td><a href="{}" class="logout header-link">File</a></td>
   </tr>
    {% endfor %}
 </table>
