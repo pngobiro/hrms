@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 # Create your models here.
@@ -15,6 +16,7 @@ class Employee(models.Model):
         date_of_birth = models.DateField(verbose_name = "Date of Birth")
         gender = models.IntegerField(choices=GENDER)
         date_of_retirement = models.DateField(blank=True,null=True)
+        last_updated = models.DateTimeField(auto_now_add=True)
 
         def __str__(self):
             return (" ".join([self.first_name, self.middle_name, self.last_name]))
@@ -22,7 +24,8 @@ class Employee(models.Model):
         def full_name(self):
             return (" ".join([self.first_name, self.middle_name, self.last_name]))
 
-        
+        def age(self):
+            return  timezone.now().year - self.date_of_birth.year     
 
             
         def current_designation(self):
@@ -56,7 +59,7 @@ class EmployeeDesignations(models.Model):
                 return "{} -{}".format(self.employee,self.designation)
             
 
-
+    
 
 
 

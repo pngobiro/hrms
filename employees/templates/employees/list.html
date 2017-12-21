@@ -1,0 +1,47 @@
+{% extends 'employees/base.html' %}
+
+{% block sidebar %}
+<div id="admin-menu">
+      <li><a href="/employees">Home</a></li>
+      <li><a href="/employees/reports">Reports</a></li>
+</div>
+ {% endblock %}
+
+{% block content %}
+<div class="box">
+<fieldset><legend>Search Employees</legend>
+<form action="/employees/" method="post">
+  {% csrf_token %}
+    <label for="team_name">Enter name: </label>
+    <input id="team_name" type="text" name="name_field" value="Search Name.">
+    <input type="submit" value="search">
+</form>
+</fieldset>
+</div>
+   <h1> {{all_employees.count}}  Employees </h1>
+  <table border = 1 id="list" class="display">
+  <tr>
+    <th>Full Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>ID Number</th>
+    <th>PJ</th>
+    <th>Current Designation</th>
+    <th></th>
+    <th>More Details</th>
+  </tr>
+  
+  {% for e in all_employees %}
+  <tr>
+    <td>{{e.full_name|title}} </td>
+    <td>{{e.age}}</td>
+    <td>{{e.gender}}</td>
+    <td>{{e.id_number}}</td>
+    <td>{{e.pj_number}}</td>
+    <td>{{e.designation}}</td>
+    <td> <a href="{}" class="logout header-link">Edit</a></td>
+    <td> <a href="{}" class="logout header-link">More Details</a></td>
+  </tr>
+   {% endfor %}
+</table>
+  {% endblock %}
