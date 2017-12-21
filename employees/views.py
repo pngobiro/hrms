@@ -1,7 +1,6 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from .models import Employee
-from django.contrib.auth import logout
-from django.shortcuts import HttpResponseRedirect
 
 # Create your views here.
 
@@ -9,10 +8,6 @@ def dashboard(request):
      context = {}
      return render(request,"employees/dashboard.html",context)
     
-def logout_view(request):
-    logout(request)
-    return HttpResponseRedirect('/accounts/login/')
-
 
 def list_employees(request):
     """
@@ -25,8 +20,6 @@ def list_employees(request):
     }
     return render(request,"employees/list.html",context)
 
-def employee_profile(request):
-    pass
 
 def employee_edit(request, pk):
     pass
@@ -34,3 +27,8 @@ def employee_edit(request, pk):
 def reports(request):
          context = {}
          return render(request,"employees/reports.html",context)
+     
+def detail(request, employee_id):
+            employee = get_object_or_404(Employee, pk=employee_id)
+            context = {"employee": employee,}
+            return render(request, 'employees/detail.html',context)

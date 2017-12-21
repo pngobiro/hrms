@@ -4,6 +4,8 @@
 <div id="admin-menu">
       <li><a href="/employees">Home</a></li>
       <li><a href="/employees/reports">Reports</a></li>
+       <li><a href="/admin">Admin</a></li>
+       <li><a href="/employees/details">Details</a></li>
 </div>
  {% endblock %}
 
@@ -29,7 +31,6 @@
     <th>Current Designation</th>
     <th></th>
     <th>More Details</th>
-    <th>File</th>
   </tr>
   
   {% for e in all_employees %}
@@ -43,7 +44,6 @@
     <td> <a href="{}" class="logout header-link">Edit</a></td>
     <td> <a href="{}" class="logout header-link">More Details</a></td>
  
-      <td><a href="{}" class="logout header-link">File</a></td>
   </tr>
    {% endfor %}
 </table>
