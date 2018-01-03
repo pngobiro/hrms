@@ -5,8 +5,11 @@ from . import views
 urlpatterns = [
              
     url(r'^$', views.dashboard, name='dashboard'),
-    url(r'^list$', views.list_employees, name='employees'),
-    url(r'^edit/(?P<pk>\d+)/$', views.employee_edit, name="employee_edit"),
+    url(r'^new$', views.EmployeesCreate.as_view(), name='new_employee'),
+    url(r'^list$', views.EmployeesListView.as_view(), name='employees-list'),
     url(r'^reports$', views.reports, name="reports"),
-    url(r'^details/(?P<employee_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^transfers/(?P<pk>\d+)$', views.EmployeesTransfersView.as_view(), name='employee-transfers'),
+    url(r'^promotions$', views.EmployeesPromotionsView.as_view(), name='employee-promotions'),
+    url(r'^leaves$', views.EmployeesLeavesView.as_view(), name='employee-leaves'),
+    url(r'^details/(?P<pk>\d+)$', views.EmployeesDetailView.as_view(), name='employee-detail'),
 ]

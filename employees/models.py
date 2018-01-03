@@ -6,6 +6,7 @@ from django.utils import timezone
 
 class Employee(models.Model):
         GENDER = ((1, 'Male'),(2, 'Female'),(3, 'Transgender'),)
+        STATUS = ((1, 'inservice'),(2, 'dismissed'),(3, 'retired'),(4, 'suspended'),(5, 'deceased'))
         first_name = models.CharField(max_length=20,help_text="Employee First Name")
         middle_name = models.CharField(max_length=20,help_text="Employee Middle Name")
         last_name = models.CharField(max_length=20,help_text="Employee Surname Name")
@@ -15,8 +16,8 @@ class Employee(models.Model):
         nssf_number = models.CharField(max_length=20,unique= True)
         date_of_birth = models.DateField(verbose_name = "Date of Birth")
         gender = models.IntegerField(choices=GENDER)
-        date_of_retirement = models.DateField(blank=True,null=True)
-        last_updated = models.DateTimeField(auto_now_add=True)
+        remarks = models.CharField(max_length=20,blank=True,null=True)
+        
 
         def __str__(self):
             return (" ".join([self.first_name, self.middle_name, self.last_name]))
@@ -29,7 +30,11 @@ class Employee(models.Model):
 
             
         def current_designation(self):
-            self.employeedesignation.last
+            return self.employeedesignation.last
+
+        def date_of_retirement(self):
+            return self.date_of_birth.year + 55
+
 
         class Meta:
            ordering = ('pj_number',)

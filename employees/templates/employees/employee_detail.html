@@ -1,0 +1,70 @@
+{% extends 'employees/base.html' %}
+
+
+{% block sidebar %}
+<div id="admin-menu">
+   <li><a href="/employees/list" class="icon icon-group">Home</a></li>
+   <li><a href="/employees/list">Leaves</a></li>
+   <li><a href="/employees/reports">Promotions</a></li>
+    <li><a href="/admin">Redesignations</a></li>
+    <li><a href="/admin">Certificates</a></li>
+</div>
+ {% endblock sidebar%}
+ 
+{% block content %}
+<div class="splitcontentleft">
+ <div class="box">
+<fieldset><legend> {{employee.full_name}} Details</legend>
+
+  <table border = 1 id="list" class="display">
+  <tr>
+    <th>First Name</th>
+    <th>{{employee.first_name}}</th>
+  </tr>
+    <th>Surname Name</th>
+    <th>{{employee.middle_name}}</th>
+  </tr>
+    <th>Last Name</th>
+    <th>{{employee.last_name}}</th>
+  </tr>
+    </tr>
+    <th>Gender</th>
+    <th>{{employee.get_gender_display}}</th>
+  </tr>
+  <tr>
+    <th>Date of Birth</th>
+    <th>{{employee.date_of_birth}}({{employee.age}} Years old)</th>
+  </tr>
+  <tr>
+    <th>National ID Number</th>
+    <th>{{employee.id_number}}</th>
+  </tr>
+  <tr>
+    <th>PJ Number</th>
+    <th>{{employee.pj_number}}</th>
+  </tr>
+  <tr>
+    <th>NHIF Number</th>
+    <th>{{employee.nhif_number}}</th>
+  </tr>
+  <tr>
+    <th>NSSF Number</th>
+    <th>{{employee.nssf_number}}</th>
+  </tr>
+  <tr>
+    <th>Remarks</th>
+    <th>{{employee.remarks}}</th>
+  </tr>
+</table>
+</fieldset>
+</div>
+</div>
+<div class="splitcontentright">
+ <div class="box">
+ <fieldset><legend> Profile</legend>
+ 
+ 
+ </fieldset>
+</div>
+</div>
+{% endblock content%}
