@@ -8,6 +8,7 @@
    <li><a href="/employees/reports">Promotions</a></li>
     <li><a href="/admin">Redesignations</a></li>
     <li><a href="/admin">Certificates</a></li>
+    <li><a href="/admin">Complaints</a></li>
 </div>
  {% endblock sidebar%}
  
@@ -16,7 +17,7 @@
  <div class="box">
 <fieldset><legend> {{employee.full_name}} Details</legend>
 
-  <table border = 1 id="list" class="display">
+  <table border = 1 id="list" class="list issues odd-even sort-by-id sort-desc">
   <tr>
     <th>First Name</th>
     <th>{{employee.first_name}}</th>
@@ -61,7 +62,7 @@
 </div>
 <div class="splitcontentright">
  <div class="box">
- <fieldset><legend> Profile</legend>
+ <fieldset><legend> Profile Picture</legend>
  
  
  </fieldset>

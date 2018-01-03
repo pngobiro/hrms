@@ -1,13 +1,20 @@
 from django.shortcuts import render
-from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse
 from .models import Employee
 from django.views import generic
 
 
 
-class EmployeesCreate(generic.CreateView):
+
+class EmployeesCreateView(generic.CreateView):
     model = Employee
-    fields = ['first_name','middle_name','last_name']
+    fields = ['first_name','middle_name','last_name','id_number','pj_number',
+              'nhif_number','nssf_number','date_of_birth','gender','remarks']
+
+    
+    def get_success_url(self):
+        return reverse("employees-list")
+   
 
 class EmployeesListView(generic.ListView):
     model = Employee
@@ -19,7 +26,6 @@ class EmployeesDetailView(generic.DetailView):
 
 class EmployeesTransfersView(generic.DetailView):
     model = Employee
-    
     template_name = "employees/transfers.html"
     
 class EmployeesPromotionsView(generic.TemplateView):
