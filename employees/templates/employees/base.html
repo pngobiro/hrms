@@ -1,91 +1,86 @@
-
 {% load staticfiles %}
 
 <!DOCTYPE html>
 <html lang="<%= current_language %>">
 <head>
-<head>
-    <title>HRMS</title>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/mobile.css' %}" media="screen and (min-device-width : 375px) and (max-device-width : 667px)">
-    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/sortable.js' %}"></script>
-    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-  </head>
+    <head>
+        <title>HRMS</title>
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/mobile.css' %}"
+              media="screen and (min-device-width : 375px) and (max-device-width : 667px)">
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/sortable.js' %}"></script>
+        <link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    </head>
 </head>
 <body class="<%= body_css_classes %>">
 
 <div id="wrapper">
 
-<div class="flyout-menu js-flyout-menu">
+    <div class="flyout-menu js-flyout-menu">
 
 
-
- {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
         <div class="flyout-menu__avatar">
-           <a href="{% url 'logout_view' %}" class="logout header-link">Logout</a>
+            <a href="{% url 'logout_view' %}" class="logout header-link">Logout</a>
         </div>
-      {% endif %}
+        {% endif %}
 
 
-    <span class="js-general-menu"></span>
+        <span class="js-general-menu"></span>
 
-    <span class="js-sidebar flyout-menu__sidebar"></span>
+        <span class="js-sidebar flyout-menu__sidebar"></span>
 
-    <span class="js-profile-menu"></span>
+        <span class="js-profile-menu"></span>
 
-</div>
-
-<div id="wrapper2">
-<div id="wrapper3">
-<div id="top-menu">
-    <div id="account">
-        <%= render_menu :account_menu -%>
     </div>
-   
-</div>
 
-<div id="header">
+    <div id="wrapper2">
+        <div id="wrapper3">
+            <div id="top-menu">
+                <div id="account">
+                    < %= render_menu:account_menu - % >
+                </div>
 
-    <a href="#" class="mobile-toggle-button js-flyout-menu-toggle-button"></a>
+            </div>
+
+            <div id="header">
+
+                <a href="#" class="mobile-toggle-button js-flyout-menu-toggle-button"></a>
 
 
+                <h1>Human Resource Management System</h1>
 
-    <h1>Human Resource Management System</h1>
 
-  
-    <div id="main-menu" class="tabs">
-    
-        <div class="tabs-buttons" style="display:none;">
-            <button class="tab-left" onclick="moveTabLeft(this); return false;"></button>
-            <button class="tab-right" onclick="moveTabRight(this); return false;"></button>
+                <div id="main-menu" class="tabs">
+
+                    <div class="tabs-buttons" style="display:none;">
+                        <button class="tab-left" onclick="moveTabLeft(this); return false;"></button>
+                        <button class="tab-right" onclick="moveTabRight(this); return false;"></button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="main" class="<%= sidebar_content? ? '' : 'nosidebar' %>">
+                <div id="sidebar">
+                    <h3>Menu</h3>
+                    {% block sidebar %}
+                    {% endblock %}
+
+                </div>
+
+                <div id="content">
+                    {% block content %}
+                    {% endblock %}
+                    <div style="clear:both;"></div>
+                </div>
+
+
+            </div>
         </div>
-    </div>
-   
-</div>
-
-<div id="main" class="<%= sidebar_content? ? '' : 'nosidebar' %>">
-    <div id="sidebar">
-<h3>Menu</h3>
-          {% block sidebar %}
-          {% endblock %}
-     
-    </div>
-
-    <div id="content">
-       {% block content %}
-        {% endblock %}
-        <div style="clear:both;"></div>
-    </div>
-    
-    
-    
-    
-    
-</div>
-</div>
-<span class="pagination"><ul class="pages"></ul><span><span class="items">
+        <span class="pagination"><ul class="pages"></ul><span><span class="items">
 {% block pagination %}
   {% if is_paginated %}
       <div class="pagination">
@@ -104,15 +99,19 @@
   {% endif %}
 {% endblock %}
 </span> </span></span>
-<div id="ajax-indicator" style="display:none;"><span><%= l(:label_loading) %></span></div>
-<div id="ajax-modal" style="display:none;"></div>
+        <div id="ajax-indicator" style="display:none;"><span><%= l(:label_loading) %></span></div>
+        <div id="ajax-modal" style="display:none;"></div>
 
-<div id="footer">
-  <div class="bgl"><div class="bgr">
-    Copyright Judiciary © Year 2018
-  </div></div>
-</div>
-</div>
+        <div id="footer">
+            <div class="bgl">
+                <div class="bgr">
+                    Copyright
+                    Judiciary © Year
+                    2018
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>

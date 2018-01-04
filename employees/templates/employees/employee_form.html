@@ -3,25 +3,26 @@
 
 {% block sidebar %}
 <div id="admin-menu">
-   <li><a href="/employees/list" class="icon icon-group">Home</a></li>
- 
+    <li><a href="/employees/list" class="icon icon-group">Home</a></li>
+
 </div>
- {% endblock sidebar%}
+{% endblock sidebar%}
 <div id="content">
-{% block content %}
+    {% block content %}
 
-<div class="box tabular">
-<fieldset><legend> Create New Employee</legend>
-  <form method="post" >
-    {% csrf_token %}
+    <div class="box tabular">
+        <fieldset>
+            <legend> Create New Employee</legend>
+            <form method="post">
+                {% csrf_token %}
 
-  {{form.as_p}}
+                {{form.as_p}}
 
-    <button type="submit" >Create</button>
-  </form>
-  
-</fieldset>
-</div>
+                <button type="submit">Create</button>
+            </form>
 
-{% endblock content%}
+        </fieldset>
+    </div>
+
+    {% endblock content%}
 </div>

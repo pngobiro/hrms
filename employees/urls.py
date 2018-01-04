@@ -1,9 +1,8 @@
 from django.conf.urls import url
 from . import views
 
-
 urlpatterns = [
-             
+
     url(r'^$', views.dashboard, name='dashboard'),
     url(r'^new$', views.EmployeesCreateView.as_view(), name='new_employee'),
     url(r'^list$', views.EmployeesListView.as_view(), name='employees-list'),

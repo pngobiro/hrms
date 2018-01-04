@@ -3,63 +3,65 @@
 
 {% block sidebar %}
 <div id="admin-menu">
-  <li><a href="{% url 'new_employee' %}">Add New Employee</a></li>
-  <li><a href="/employees/reports">Reports</a></li>
-  <li><a href="/admin">Admin</a></li>
-  <li><a href="/designations-list">Designations List</a></li>
-  <li><a href="/courtstations-list">Courtstations List</a></li>
+    <li><a href="{% url 'new_employee' %}">Add New Employee</a></li>
+    <li><a href="/employees/reports">Reports</a></li>
+    <li><a href="/admin">Admin</a></li>
+    <li><a href="/designations-list">Designations List</a></li>
+    <li><a href="/courtstations-list">Courtstations List</a></li>
 </div>
 {% endblock %}
 
 
-
 {% block content %}
 <div class="box">
-<fieldset><legend>Search Employees By</legend>
-<form action="{% url 'employees-list' %}" method="get">
-  {% csrf_token %}
-    <input id="employee_name" type="text" name="employee_name" placeholder="Search by Name.">
-    <input id="employee_pj" type="text" name="employee_pj" placeholder="Search by PJ.">
-    <input id="employee_national_id_number" type="text" name="employee_national_id_number" placeholder="Search by ID Number.">
-    <input type="submit" value="search">
-  
-</form>
-</fieldset>
+    <fieldset>
+        <legend>Search Employees By</legend>
+        <form action="{% url 'employees-list' %}" method="get">
+            {% csrf_token %}
+            <input id="employee_name" type="text" name="employee_name" placeholder="Search by Name.">
+            <input id="employee_pj" type="text" name="employee_pj" placeholder="Search by PJ.">
+            <input id="employee_national_id_number" type="text" name="employee_national_id_number"
+                   placeholder="Search by ID Number.">
+            <input type="submit" value="search">
+
+        </form>
+    </fieldset>
 </div>
 
 
 <div class="box">
-<fieldset><legend>Employees List - {{employee_list.count}} </legend>
+    <fieldset>
+        <legend>Employees List - {{employee_list.count}}</legend>
 
-  <table border = 1 id="list" class="list issues odd-even sort-by-id sort-desc">
-  <tr>
-    <th>Full Name</th>
-    <th>Age</th>
-    <th>Gender</th>
-    <th>ID Number</th>
-    <th>PJ</th>
-    <th>Current Station</th>
-    <th>Current Designation</th>
-    <th></th>
-    <th>More Details</th>
-  </tr>
-  
-  {% for e in employee_list %}
-  <tr>
-    <td>{{e.full_name|title}} </td>
-    <td>{{e.age}}</td>
-    <td>{{e.get_gender_display }}</td>
-    <td>{{e.id_number}}</td>
-    <td>{{e.pj_number}}</td>
-    <td></td>
-    <td>{{e.designation}}</td>
-    <td> <a href="{}">Edit</a></td>
-    <td> <a href="{% url 'employee-detail' e.pk %}" >More Details</a></td>
- 
-  </tr>
-   {% endfor %}
-</table>
-</fieldset>
+        <table border=1 id="list" class="list issues odd-even sort-by-id sort-desc">
+            <tr>
+                <th>Full Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>ID Number</th>
+                <th>PJ</th>
+                <th>Current Station</th>
+                <th>Current Designation</th>
+                <th></th>
+                <th>More Details</th>
+            </tr>
+
+            {% for e in employee_list %}
+            <tr>
+                <td>{{e.full_name|title}}</td>
+                <td>{{e.age}}</td>
+                <td>{{e.get_gender_display }}</td>
+                <td>{{e.id_number}}</td>
+                <td>{{e.pj_number}}</td>
+                <td></td>
+                <td>{{e.designation}}</td>
+                <td><a href="{}">Edit</a></td>
+                <td><a href="{% url 'employee-detail' e.pk %}">More Details</a></td>
+
+            </tr>
+            {% endfor %}
+        </table>
+    </fieldset>
 </div>
 
 {% endblock content%}
