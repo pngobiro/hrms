@@ -55,7 +55,7 @@
                 <td>{{e.pj_number}}</td>
                 <td></td>
                 <td>{{e.designation}}</td>
-                <td><a href="{}">Edit</a></td>
+                <td><a href="{% url 'employee-update' e.pk %}">Edit</a></td>
                 <td><a href="{% url 'employee-detail' e.pk %}">More Details</a></td>
 
             </tr>
