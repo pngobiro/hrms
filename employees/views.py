@@ -4,6 +4,7 @@ from .models import Employee
 from django.views import generic
 
 
+
 class EmployeesCreateView(generic.CreateView):
     model = Employee
     fields = ['first_name', 'middle_name', 'last_name', 'id_number', 'pj_number',
