@@ -16,7 +16,11 @@ class Employee(models.Model):
     nssf_number = models.CharField(max_length=20, unique=True)
     date_of_birth = models.DateField(verbose_name="Date of Birth")
     gender = models.IntegerField(choices=GENDER)
+    #email_address = models.EmailField(null=True,blank=True, unique=True)
+    postal_address = models.CharField(max_length=10, help_text="Postal Adddress", blank=True, null=True)
+    home_country = models.IntegerField()
     remarks = models.CharField(max_length=20, blank=True, null=True)
+    profile_picture = models.ImageField(upload_to='employees_profile_picture', blank=True, null=True)
 
     def __str__(self):
         return (" ".join([self.first_name, self.middle_name, self.last_name]))

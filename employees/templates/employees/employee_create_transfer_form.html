@@ -9,7 +9,7 @@
 {% block content %}
 <div class="box">
     <fieldset>
-        <legend> New Transfer For  </legend>
+        <legend> <h1>New Transfer For {{employee.full_name}} </h1></legend>
         <form action="{% url 'employees-list' %}" method="get">
             {% csrf_token %}
 

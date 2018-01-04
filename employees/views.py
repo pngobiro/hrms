@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
+from django.shortcuts import get_object_or_404
 from .models import Employee
 from django.views import generic
 
@@ -33,41 +34,43 @@ class EmployeeUpdateView(generic.UpdateView):
         return reverse("employees-list")
 
 
-class EmployeeTransfersView(generic.TemplateView):
+class EmployeeTransfersView(generic.DetailView):
     model = Employee
     template_name = "employees/employee_transfers.html"
 
-class EmployeeCreateNewTransferView(generic.TemplateView):
+class EmployeeCreateNewTransferView(generic.DetailView):
     model = Employee
     template_name = "employees/employee_create_transfer_form.html"
 
 
-class EmployeeLeavesView(generic.TemplateView):
+class EmployeeLeavesView(generic.DetailView):
     model = Employee
     template_name = "employees/employee_leaves.html"
 
-class EmployeeCreateLeaveFormView(generic.TemplateView):
+class EmployeeCreateLeaveFormView(generic.DetailView):
     model = Employee
     template_name = "employees/employee_create_leave_form.html"
 
 
-class EmployeeDocuments(generic.TemplateView):
+class EmployeeDocuments(generic.DetailView):
     model = Employee
     template_name = "employees/employee_documents.html"
 
-class EmployeeAddNewDocument(generic.TemplateView):
+class EmployeeAddNewDocument(generic.DetailView):
     model = Employee
     template_name = "employees/employee_new_document_form.html"
 
 
-class EmployeePromotionsView(generic.TemplateView):
+class EmployeePromotionsView(generic.DetailView):
     model = Employee
     template_name = "employees/employee_promotions.html"
 
 
-class EmployeePromoteView(generic.TemplateView):
+class EmployeePromoteView(generic.DetailView):
     model = Employee
     template_name = "employees/employee_promote_form.html"
+
+
 
 
 def dashboard(request):
