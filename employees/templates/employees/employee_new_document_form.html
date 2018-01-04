@@ -1,0 +1,33 @@
+{% extends 'employees/base.html' %}
+
+
+{% block sidebar %}
+<div id="admin-menu">
+    <li><a href="/employees/list" class="icon icon-group">Home</a></li>
+
+</div>
+{% endblock sidebar%}
+
+{% block content %}
+
+<div class="content">
+    <div class="box">
+    <fieldset>
+        <legend>Add Document FormSets</legend>
+
+
+
+
+
+
+
+                <table border=1 id="list" class="list issues odd-even sort-by-id sort-desc">
+
+                </table>
+            </fieldset>
+        </div>
+
+
+
+    {% endblock content%}
+</div>

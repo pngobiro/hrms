@@ -17,9 +17,10 @@
     <fieldset>
         <legend>{{employee.full_name}} Actions</legend>
         <a href="{% url 'employee-update' employee.pk %}"> Edit Details</a>|
-        <a href="{% url 'employee-update' employee.pk %}"> Promote </a>|
-        <a href="{% url 'employee-update' employee.pk %}"> Create Leave </a>|
-        <a href="{% url 'employee-update' employee.pk %}"> Add Document </a>
+        <a href="{% url 'employee-promote' employee.pk %}"> Promote </a>|
+        <a href="{% url 'employee-new-leave' employee.pk %}"> Create Leave </a>|
+        <a href="{% url 'employee-add-new-document' employee.pk %}"> Add Document </a>|
+        <a href="{% url 'employee-new-transfer' employee.pk %}"> Transfer </a>
     </fieldset>
 
     <div class="splitcontentleft">
@@ -75,6 +76,11 @@
             <fieldset>
                 <legend> Profile Picture</legend>
 
+                <a href=""> Add Picture</a>|
+
+                <a href=""> Update Picture</a>
+
+            </fieldset>
 
             </fieldset>
         </div>

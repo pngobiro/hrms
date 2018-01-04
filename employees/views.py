@@ -37,21 +37,37 @@ class EmployeeTransfersView(generic.TemplateView):
     model = Employee
     template_name = "employees/employee_transfers.html"
 
+class EmployeeCreateNewTransferView(generic.TemplateView):
+    model = Employee
+    template_name = "employees/employee_create_transfer_form.html"
 
 
 class EmployeeLeavesView(generic.TemplateView):
     model = Employee
     template_name = "employees/employee_leaves.html"
 
+class EmployeeCreateLeaveFormView(generic.TemplateView):
+    model = Employee
+    template_name = "employees/employee_create_leave_form.html"
+
 
 class EmployeeDocuments(generic.TemplateView):
     model = Employee
     template_name = "employees/employee_documents.html"
 
+class EmployeeAddNewDocument(generic.TemplateView):
+    model = Employee
+    template_name = "employees/employee_new_document_form.html"
+
 
 class EmployeePromotionsView(generic.TemplateView):
     model = Employee
     template_name = "employees/employee_promotions.html"
+
+
+class EmployeePromoteView(generic.TemplateView):
+    model = Employee
+    template_name = "employees/employee_promote_form.html"
 
 
 def dashboard(request):

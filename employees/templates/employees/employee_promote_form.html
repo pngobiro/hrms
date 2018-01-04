@@ -1,0 +1,26 @@
+{% extends 'employees/base.html' %}
+{% block sidebar %}
+<div id="admin-menu">
+    <li><a href="/employees/list" class="icon icon-group">Home</a></li>
+
+</div>
+{% endblock sidebar%}
+
+{% block content %}
+<div class="box">
+    <fieldset>
+        <legend>Promote Employee</legend>
+        <form action="{% url 'employees-list' %}" method="get">
+            {% csrf_token %}
+            <input id="employee_current_designation" type="text" name="employee_current_designation"
+                   placeholder="Employee Current Designation."></br>
+            <input id="employee_next_designation" type="text" name="employee_next_designation"
+                   placeholder="Employee Next Designation"></br>
+            <input type="submit" value="Promote">
+
+        </form>
+    </fieldset>
+</div>
+
+
+{% endblock content%}

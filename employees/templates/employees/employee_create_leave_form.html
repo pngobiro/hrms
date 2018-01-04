@@ -1,0 +1,24 @@
+{% extends 'employees/base.html' %}
+
+{% block sidebar %}
+<div id="admin-menu">
+    <li><a href="/employees/list" class="icon icon-group">Home</a></li>
+
+</div>
+{% endblock sidebar%}
+{% block content %}
+<div class="box">
+    <fieldset>
+        <legend> New Leave For  </legend>
+        <form action="{% url 'employees-list' %}" method="get">
+            {% csrf_token %}
+
+            <input type="submit" value="Create Leave Request">
+
+        </form>
+    </fieldset>
+</div>
+
+
+
+{% endblock content%}
