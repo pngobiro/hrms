@@ -1,0 +1,28 @@
+{% extends 'employees/base.html' %}
+
+
+{% block sidebar %}
+<div id="admin-menu">
+    <li><a href="/employees/list" class="icon icon-group">Home</a></li>
+
+</div>
+{% endblock sidebar%}
+<div id="content">
+    {% block content %}
+
+    <div class="box tabular">
+        <fieldset>
+            <legend> Update Employee</legend>
+            <form method="post">
+                {% csrf_token %}
+
+                {{form.as_p}}
+
+                <button type="submit">Update</button>
+            </form>
+
+        </fieldset>
+    </div>
+
+    {% endblock content%}
+</div>

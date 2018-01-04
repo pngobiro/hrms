@@ -4,7 +4,7 @@ from .models import Employee
 from django.views import generic
 
 
-class EmployeesCreateView(generic.CreateView):
+class EmployeeCreateView(generic.CreateView):
     model = Employee
     fields = ['first_name', 'middle_name', 'last_name', 'id_number', 'pj_number',
               'nhif_number', 'nssf_number', 'date_of_birth', 'gender', 'remarks']
@@ -13,17 +13,18 @@ class EmployeesCreateView(generic.CreateView):
         return reverse("employees-list")
 
 
-class EmployeesListView(generic.ListView):
+class EmployeeListView(generic.ListView):
     model = Employee
     paginate_by = 20
 
 
-class EmployeesDetailView(generic.DetailView):
+class EmployeeDetailView(generic.DetailView):
     model = Employee
 
 
-class EmployeesUpdateView(generic.UpdateView):
+class EmployeeUpdateView(generic.UpdateView):
     model = Employee
+    template_name = "employees/employee_update_form.html"
 
     fields = ['first_name', 'middle_name', 'last_name', 'id_number', 'pj_number',
               'nhif_number', 'nssf_number', 'date_of_birth', 'gender', 'remarks']
@@ -32,25 +33,25 @@ class EmployeesUpdateView(generic.UpdateView):
         return reverse("employees-list")
 
 
-class EmployeesTransfersView(generic.View):
+class EmployeeTransfersView(generic.TemplateView):
     model = Employee
-    template_name = "employees/transfers.html"
+    template_name = "employees/employee_transfers.html"
 
 
 
-class EmployeesLeavesView(generic.View):
+class EmployeeLeavesView(generic.TemplateView):
     model = Employee
-    template_name = "employees/leaves.html"
+    template_name = "employees/employee_leaves.html"
 
 
-class EmployeesDocuments(generic.View):
+class EmployeeDocuments(generic.TemplateView):
     model = Employee
-    template_name = "employees/documents.html"
+    template_name = "employees/employee_documents.html"
 
 
-class EmployeesPromotionsView(generic.View):
+class EmployeePromotionsView(generic.TemplateView):
     model = Employee
-    template_name = "employees/promotions.html"
+    template_name = "employees/employee_promotions.html"
 
 
 def dashboard(request):

@@ -9,14 +9,18 @@
     <li><a href="{% url 'employee-documents' employee.pk %}">Documents</a></li>
     <li><a href="{% url 'employee-transfers' employee.pk %}">Transfers</a></li>
 </div>
-    {% endblock sidebar%}
+{% endblock sidebar%}
 
-    {% block content %}
+{% block content %}
 
 <div class="content">
-<fieldset><legend>Actions</legend>
-<a href="{% url 'employee-update' employee.pk %}"> Edit {{employee.full_name}}</a>
- </fieldset>
+    <fieldset>
+        <legend>{{employee.full_name}} Actions</legend>
+        <a href="{% url 'employee-update' employee.pk %}"> Edit Details</a>|
+        <a href="{% url 'employee-update' employee.pk %}"> Promote </a>|
+        <a href="{% url 'employee-update' employee.pk %}"> Create Leave </a>|
+        <a href="{% url 'employee-update' employee.pk %}"> Add Document </a>
+    </fieldset>
 
     <div class="splitcontentleft">
         <div class="box">
