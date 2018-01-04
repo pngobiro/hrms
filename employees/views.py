@@ -18,21 +18,21 @@ class EmployeesCreateView(generic.CreateView):
 
 class EmployeesListView(generic.ListView):
     model = Employee
-    paginate_by = 10
+    paginate_by = 20
    
 
 class EmployeesDetailView(generic.DetailView):
     model = Employee
 
-class EmployeesTransfersView(generic.DetailView):
+class EmployeesTransfersView(generic.View):
     model = Employee
     template_name = "employees/transfers.html"
     
-class EmployeesPromotionsView(generic.TemplateView):
+class EmployeesPromotionsView(generic.View):
     model = Employee
     template_name = "employees/promotions.html"
     
-class EmployeesLeavesView(generic.TemplateView):
+class EmployeesLeavesView(generic.View):
     model = Employee
     template_name = "employees/leaves.html"
 
